@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CallFlow™ | Engineered Lead Generation Systems for Service Businesses</title>
+<meta name="description" content="CallFlow™ — Engineered lead generation systems for service businesses across Canada, USA & UK. Google Map Pack domination, emergency call ads & missed-call automation. Built by Alauddin — CSE Graduate, ex-KFC Shift Manager & Baba Rafi IT Officer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:        #07111F;
+    --navy-mid:    #0E1E35;
+    --navy-light:  #152844;
+    --orange:      #F4511E;
+    --orange-glow: #FF6B3D;
+    --orange-dim:  rgba(244,81,30,0.12);
+    --white:       #FFFFFF;
+    --ice:         #F2F6FF;
+    --gray-100:    #EEF1F8;
+    --gray-300:    #C8D0E0;
+    --text:        #0B1628;
+    --text-light:  #5A6882;
+    --green:       #19D68A;
+    --radius-xl:   28px;
+    --radius-lg:   18px;
+    --radius-md:   12px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.1; letter-spacing: -0.03em; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+  .section-gap { padding: 110px 0; }
+
+  .label {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--orange); font-size: 11px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 18px;
+  }
+  .label::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--orange); border-radius: 2px; }
+
+  /* ══ BUTTONS ══ */
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; border-radius: var(--radius-md); transition: all 0.25s ease; cursor: pointer; border: none; }
+  .btn-primary { background: var(--orange); color: #fff; padding: 15px 32px; box-shadow: 0 4px 20px rgba(244,81,30,0.3); }
+  .btn-primary:hover { background: var(--orange-glow); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(244,81,30,0.4); }
+  .btn-ghost { background: rgba(255,255,255,0.08); color: var(--white); padding: 15px 32px; border: 1px solid rgba(255,255,255,0.15); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+  .btn-sm { padding: 10px 22px; font-size: 13px; }
+  .btn-outline { background: transparent; color: var(--orange); padding: 12px 26px; border: 2px solid var(--orange); }
+  .btn-outline:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
+
+  /* ══ NAV ══ */
+  nav {
+    background: rgba(7,17,31,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 0;
+    position: sticky; top: 0; z-index: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .nav-inner { display: flex; align-items: stretch; justify-content: space-between; gap: 0; height: 68px; }
+  .logo { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--white); text-decoration: none; letter-spacing: -0.5px; display: flex; align-items: center; padding: 0 4px; }
+  .logo em { color: var(--orange); font-style: normal; }
+  .logo-tm { font-size: 14px; vertical-align: super; color: var(--orange); margin-left: 1px; }
+  .nav-badge { font-size: 11px; font-weight: 600; color: var(--green); background: rgba(25,214,138,0.1); border: 1px solid rgba(25,214,138,0.25); padding: 3px 10px; border-radius: 50px; margin-left: 12px; }
+
+  /* Nav links */
+  .nav-links { display: flex; align-items: stretch; gap: 0; list-style: none; }
+  .nav-links > li { position: relative; display: flex; align-items: stretch; }
+  .nav-links > li > a, .nav-links > li > button {
+    display: flex; align-items: center; gap: 6px;
+    font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600;
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    padding: 0 18px; background: none; border: none; cursor: pointer;
+    transition: color 0.2s; white-space: nowrap; letter-spacing: 0.3px;
+  }
+  .nav-links > li > a:hover, .nav-links > li > button:hover { color: var(--white); }
+  .nav-links > li > a.active, .nav-links > li > button.active { color: var(--orange); }
+
+  /* Chevron */
+  .chevron { width: 14px; height: 14px; transition: transform 0.25s; flex-shrink: 0; }
+  .nav-links > li:hover .chevron { transform: rotate(180deg); }
+
+  /* Dropdown */
+  .dropdown {
+    position: absolute; top: calc(100% + 1px); left: 0;
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-md);
+    padding: 8px;
+    min-width: 280px;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transform: translateY(8px);
+    transition: all 0.22s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  }
+  .nav-links > li:hover .dropdown { opacity: 1; visibility: visible; pointer-events: all; transform: translateY(0); }
+
+  .dropdown-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 11px 14px; border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .dropdown-item:hover { background: rgba(255,255,255,0.07); }
+  .dd-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--orange-dim); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .dd-text .dd-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--white); line-height: 1.2; }
+  .dd-text .dd-desc { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+  .dropdown-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 6px 0; }
+  .dropdown-footer { padding: 10px 14px 4px; }
+  .dropdown-footer a { font-size: 12px; font-weight: 600; color: var(--orange); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+  .dropdown-footer a:hover { color: var(--orange-glow); }
+
+  .nav-right { display: flex; align-items: center; gap: 12px; padding-left: 16px; }
+
+  /* Mobile hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0;
+    background: var(--navy); overflow-y: auto; z-index: 490; padding: 24px;
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-section-title { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--orange); text-transform: uppercase; margin: 20px 0 10px; }
+  .mobile-niche-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .mobile-niche-item:last-child { border-bottom: none; }
+  .mobile-niche-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--orange-dim); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .mobile-niche-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); }
+  .mobile-niche-desc { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 1px; }
+  .mobile-cta { margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+
+  /* ══ HERO ══ */
+  .hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 100px 0 90px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+  .hero::after { content: ''; position: absolute; top: -150px; right: -150px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(244,81,30,0.14) 0%, transparent 65%); pointer-events: none; }
+  /* second glow bottom-left */
+  .hero-glow2 { position: absolute; bottom: -100px; left: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(244,81,30,0.07) 0%, transparent 65%); pointer-events: none; z-index: 0; }
+
+  .hero-inner { display: flex; align-items: center; gap: 80px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .hero-content { flex: 1.2; min-width: 300px; }
+
+  .hero-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(244,81,30,0.1); border: 1px solid rgba(244,81,30,0.28); color: #FF9070; font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 50px; margin-bottom: 28px; }
+  .hero-pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)} }
+
+  .hero h1 { font-size: clamp(40px, 5vw, 68px); font-weight: 800; margin-bottom: 24px; }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+  .hero-sub { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.72); margin-bottom: 42px; max-width: 540px; line-height: 1.75; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .hero-trust { margin-top: 52px; padding-top: 38px; border-top: 1px solid rgba(255,255,255,0.09); display: flex; gap: 40px; flex-wrap: wrap; }
+  .trust-item { display: flex; flex-direction: column; gap: 3px; }
+  .trust-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--white); }
+  .trust-num em { color: var(--orange); font-style: normal; }
+  .trust-label { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+  /* Profile */
+  .hero-visual { flex: 0.8; min-width: 280px; display: flex; justify-content: center; position: relative; }
+  .profile-wrap { position: relative; display: inline-block; }
+  .profile-img { width: 360px; height: 360px; border-radius: 50%; object-fit: cover; border: 5px solid var(--orange); box-shadow: 0 0 0 1px rgba(244,81,30,0.3), 0 30px 60px rgba(0,0,0,0.4), 0 0 80px rgba(244,81,30,0.15); display: block; background: var(--navy-light); transition: transform 0.4s ease; }
+  .profile-img:hover { transform: scale(1.025); }
+  .cred-card { position: absolute; bottom: 20px; left: -40px; background: rgba(14,30,53,0.97); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 16px 22px; white-space: nowrap; }
+  .cred-card .cred-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); }
+  .cred-card .cred-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+
+  /* Floating stat badge top-right */
+  .stat-float { position: absolute; top: 10px; right: -20px; background: rgba(244,81,30,0.12); border: 1px solid rgba(244,81,30,0.3); border-radius: var(--radius-md); padding: 12px 18px; text-align: center; }
+  .stat-float-num { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--orange); }
+  .stat-float-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+  /* ══ TICKER ══ */
+  .ticker-bar { background: var(--orange); padding: 12px 0; overflow: hidden; white-space: nowrap; }
+  .ticker-track { display: inline-flex; animation: ticker 36s linear infinite; }
+  .ticker-item { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: #fff; padding: 0 36px; letter-spacing: 0.5px; }
+  .ticker-item::after { content: '✦'; margin-left: 36px; opacity: 0.6; }
+  @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* ══ NICHES SECTION ══ */
+  .niches { background: var(--ice); }
+  .niches-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; margin-top: 52px; }
+
+  .niche-card {
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-xl);
+    padding: 32px 28px;
+    text-decoration: none;
+    display: flex; flex-direction: column; gap: 0;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .niche-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--orange), var(--orange-glow)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+  .niche-card:hover { transform: translateY(-7px); box-shadow: 0 24px 48px rgba(244,81,30,0.1); border-color: rgba(244,81,30,0.3); }
+  .niche-card:hover::after { transform: scaleX(1); }
+
+  .niche-icon-wrap { width: 56px; height: 56px; border-radius: 16px; background: var(--orange-dim); display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; transition: background 0.3s; }
+  .niche-card:hover .niche-icon-wrap { background: rgba(244,81,30,0.2); }
+
+  .niche-card h3 { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+  .niche-card p { font-size: 14px; color: var(--text-light); line-height: 1.65; flex: 1; }
+
+  .niche-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--gray-100); }
+  .niche-brand { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; color: var(--orange); letter-spacing: 0.5px; }
+  .niche-arrow { width: 32px; height: 32px; border-radius: 50%; background: var(--orange-dim); display: flex; align-items: center; justify-content: center; color: var(--orange); font-size: 16px; transition: all 0.25s; }
+  .niche-card:hover .niche-arrow { background: var(--orange); color: #fff; transform: translateX(3px); }
+
+  /* Niche tags */
+  .niche-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+  .niche-tag { font-size: 11px; font-weight: 600; color: var(--text-light); background: var(--ice); border: 1px solid var(--gray-100); padding: 3px 10px; border-radius: 50px; }
+
+  /* ══ HOW CALLFLOW WORKS ══ */
+  .how-section { background: var(--white); }
+  .steps-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; margin-top: 60px; position: relative; }
+  .steps-row::before { content: ''; position: absolute; top: 42px; left: 10%; right: 10%; height: 2px; background: repeating-linear-gradient(90deg, var(--orange) 0, var(--orange) 8px, transparent 8px, transparent 16px); z-index: 0; }
+  .step { text-align: center; padding: 0 28px; position: relative; z-index: 1; }
+  .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--orange); color: #fff; font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: 0 6px 20px rgba(244,81,30,0.35); }
+  .step h4 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .step p { font-size: 14px; color: var(--text-light); line-height: 1.65; }
+
+  /* ══ PROOF STRIP ══ */
+  .proof-strip { background: var(--navy-mid); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 56px 0; }
+  .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0; }
+  .proof-item { text-align: center; padding: 0 24px; position: relative; }
+  .proof-item + .proof-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 52px; background: rgba(255,255,255,0.1); }
+  .proof-num { font-family: 'Syne', sans-serif; font-size: clamp(28px,3.5vw,46px); font-weight: 800; color: var(--orange); line-height: 1; margin-bottom: 10px; display: block; }
+  .proof-label { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.55); line-height: 1.5; }
+
+  /* ══ MARKETS ══ */
+  .markets { background: var(--navy); color: var(--white); }
+  .markets .label { color: var(--orange); }
+  .markets h2 { font-size: clamp(28px,4vw,44px); color: var(--white); margin-bottom: 16px; }
+  .markets-intro { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 620px; margin-bottom: 48px; line-height: 1.75; }
+
+  .markets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .market-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-lg); padding: 28px 26px; transition: all 0.28s; }
+  .market-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(244,81,30,0.4); transform: translateY(-4px); }
+  .market-flag { font-size: 36px; margin-bottom: 14px; display: block; }
+  .market-card h4 { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .market-card p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+  /* ══ WHY CALLFLOW ══ */
+  .why { background: var(--white); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .why-content h2 { font-size: clamp(28px,3.5vw,42px); margin-bottom: 22px; }
+  .why-content p { font-size: 16px; color: var(--text-light); line-height: 1.8; margin-bottom: 18px; }
+  .credential-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .credential-list li { display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 500; color: var(--text); }
+  .cred-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--orange-dim); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+
+  .why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .stat-box { background: var(--ice); border: 1px solid var(--gray-300); border-radius: var(--radius-lg); padding: 28px 24px; text-align: center; transition: all 0.25s; }
+  .stat-box:hover { border-color: var(--orange); transform: translateY(-4px); }
+  .stat-num-box { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: var(--orange); line-height: 1; margin-bottom: 8px; }
+  .stat-desc { font-size: 13px; color: var(--text-light); }
+
+  /* ══ SERVICES ══ */
+  .services { background: var(--ice); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
+  .service-card { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-xl); padding: 34px 30px; transition: all 0.3s; position: relative; overflow: hidden; }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--orange), var(--orange-glow)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.07); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon-box { width: 52px; height: 52px; border-radius: 14px; background: var(--orange-dim); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+  .service-card h4 { font-size: 19px; font-weight: 700; margin-bottom: 12px; }
+  .service-card p { font-size: 14px; color: var(--text-light); line-height: 1.7; }
+  .service-list { margin-top: 18px; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .service-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-light); }
+  .service-list li::before { content: '→'; color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* ══ FAQ ══ */
+  .faq { background: var(--ice); }
+  .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 16px; margin-top: 48px; }
+  @media(max-width:1060px){ .faq-grid { grid-template-columns: 1fr; } }
+  .faq-item { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-lg); overflow: hidden; transition: border-color 0.25s; }
+  .faq-item:hover { border-color: var(--orange); }
+  .faq-q { width: 100%; background: none; border: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px; cursor: pointer; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); text-align: left; }
+  .faq-q .faq-arrow { width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; background: var(--orange-dim); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--orange); transition: transform 0.3s, background 0.3s; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); background: var(--orange); color: #fff; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s; padding: 0 26px; font-size: 14px; color: var(--text-light); line-height: 1.75; }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 26px 22px; }
+
+  /* ══ FOOTER CTA ══ */
+  footer { background: var(--navy); color: var(--white); padding: 100px 0 60px; text-align: center; position: relative; overflow: hidden; }
+  footer::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center bottom, rgba(244,81,30,0.12) 0%, transparent 65%); pointer-events: none; }
+  .footer-inner { position: relative; z-index: 1; }
+  .footer-inner h2 { font-size: clamp(30px,4.5vw,54px); color: var(--white); margin-bottom: 18px; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .footer-inner h2 em { color: var(--orange); font-style: normal; }
+  .footer-sub { font-size: 17px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto 48px; line-height: 1.75; }
+  .footer-cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 0 auto 40px; max-width: 700px; }
+
+  /* Footer niches */
+  .footer-niches { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 48px; }
+  .footer-niche-link { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); text-decoration: none; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50px; transition: all 0.2s; }
+  .footer-niche-link:hover { color: var(--orange); border-color: rgba(244,81,30,0.4); }
+
+  .footer-meta { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 2; }
+  .footer-meta strong { color: rgba(255,255,255,0.55); }
+  .footer-meta a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  .footer-meta a:hover { color: var(--orange); }
+
+  /* ══ RESPONSIVE ══ */
+  @media(max-width:900px){
+    .why-grid { grid-template-columns: 1fr; gap: 50px; }
+    .steps-row::before { display: none; }
+    .proof-item + .proof-item::before { display: none; }
+    .proof-grid { gap: 32px; }
+    .nav-links, .nav-right .btn-primary { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media(max-width:680px){
+    .hero { padding: 70px 0 80px; }
+    .hero-inner { flex-direction: column-reverse; text-align: center; gap: 44px; }
+    .hero-cta, .hero-trust { justify-content: center; }
+    .profile-img { width: 260px; height: 260px; }
+    .cred-card { left: 50%; transform: translateX(-50%); bottom: -20px; }
+    .stat-float { display: none; }
+    .section-gap { padding: 80px 0; }
+    .niches-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a class="logo" href="#" aria-label="CallFlow Home">
+      Call<em>Flow</em><span class="logo-tm">™</span>
+      <span class="nav-badge">● Available</span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li>
+        <button aria-haspopup="true" aria-expanded="false">
+          Our Niches
+          <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 6 8 10 12 6"/></svg>
+        </button>
+        <div class="dropdown" role="menu">
+          <a class="dropdown-item" href="index4.html" role="menuitem">
+            <div class="dd-icon">🔑</div>
+            <div class="dd-text"><div class="dd-name">LocksmithCallFlow™</div><div class="dd-desc">Locksmith Businesses · CA · US · UK</div></div>
+          </a>
+          <a class="dropdown-item" href="index5.html" role="menuitem">
+            <div class="dd-icon">🛻</div>
+            <div class="dd-text"><div class="dd-name">TowingCallFlow™</div><div class="dd-desc">Towing & Roadside Assistance</div></div>
+          </a>
+          <a class="dropdown-item" href="index6.html" role="menuitem">
+            <div class="dd-icon">⚡</div>
+            <div class="dd-text"><div class="dd-name">ElectricianCallFlow™</div><div class="dd-desc">Electrician Businesses</div></div>
+          </a>
+          <a class="dropdown-item" href="index2.html" role="menuitem">
+            <div class="dd-icon">🔧</div>
+            <div class="dd-text"><div class="dd-name">Plum-HVACCallFlow™</div><div class="dd-desc">Plumbing & HVAC Contractors</div></div>
+          </a>
+          <a class="dropdown-item" href="index1.html" role="menuitem">
+            <div class="dd-icon">🦷</div>
+            <div class="dd-text"><div class="dd-name">DentalCallFlow™</div><div class="dd-desc">Dental Practices & Clinics</div></div>
+          </a>
+          <a class="dropdown-item" href="index.html" role="menuitem">
+            <div class="dd-icon">🐛</div>
+            <div class="dd-text"><div class="dd-name">BugFreeFlow™</div><div class="dd-desc">Pest Control Businesses</div></div>
+          </a>
+          <a class="dropdown-item" href="index3.html" role="menuitem">
+            <div class="dd-icon">🍔</div>
+            <div class="dd-text"><div class="dd-name">FoodCallFlow™</div><div class="dd-desc">Restaurants & Fast-Food Chains</div></div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <div class="dropdown-footer">
+            <a href="#niches">View All Niches & Systems →</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#why">Why CallFlow</a></li>
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <a href="https://wa.me/8801689851306" class="btn btn-primary btn-sm">Book Free Audit</a>
+      <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <p class="mobile-section-title">Our Niches</p>
+  <a class="mobile-niche-item" href="index4.html"><div class="mobile-niche-icon">🔑</div><div><div class="mobile-niche-name">LocksmithCallFlow™</div><div class="mobile-niche-desc">Locksmith Businesses</div></div></a>
+  <a class="mobile-niche-item" href="index5.html"><div class="mobile-niche-icon">🛻</div><div><div class="mobile-niche-name">TowingCallFlow™</div><div class="mobile-niche-desc">Towing & Roadside Assistance</div></div></a>
+  <a class="mobile-niche-item" href="index6.html"><div class="mobile-niche-icon">⚡</div><div><div class="mobile-niche-name">ElectricianCallFlow™</div><div class="mobile-niche-desc">Electrician Businesses</div></div></a>
+  <a class="mobile-niche-item" href="index2.html"><div class="mobile-niche-icon">🔧</div><div><div class="mobile-niche-name">Plum-HVACCallFlow™</div><div class="mobile-niche-desc">Plumbing & HVAC Contractors</div></div></a>
+  <a class="mobile-niche-item" href="index1.html"><div class="mobile-niche-icon">🦷</div><div><div class="mobile-niche-name">DentalCallFlow™</div><div class="mobile-niche-desc">Dental Practices & Clinics</div></div></a>
+  <a class="mobile-niche-item" href="index.html"><div class="mobile-niche-icon">🐛</div><div><div class="mobile-niche-name">BugFreeFlow™</div><div class="mobile-niche-desc">Pest Control Businesses</div></div></a>
+  <a class="mobile-niche-item" href="index3.html"><div class="mobile-niche-icon">🍔</div><div><div class="mobile-niche-name">FoodCallFlow™</div><div class="mobile-niche-desc">Restaurants & Fast Food</div></div></a>
+  <div class="mobile-cta">
+    <a href="https://wa.me/8801689851306" class="btn btn-primary" style="justify-content:center;">💬 WhatsApp Me Now</a>
+    <a href="https://calendly.com/alauddinxyzbd/30min" class="btn btn-ghost" style="justify-content:center;">📅 Schedule via Calendly</a>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-glow2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-pill">
+          <span class="dot"></span>
+          Engineered Lead Generation · CA · US · UK
+        </div>
+
+        <h1>
+          One Brand.<br>
+          Seven Niches.<br>
+          <em>Infinite Growth.</em>
+        </h1>
+
+        <p class="hero-sub">
+          CallFlow™ is the master lead generation brand built by <strong>Alauddin</strong> — CSE Graduate, ex-KFC Shift Manager, and former IT Executive Officer at Baba Rafi. Every niche. Every market. One engineered system — making your phone ring with high-value jobs that don't pass through aggregators, directories, or middlemen.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#niches" class="btn btn-primary">Explore Our Systems</a>
+          <a href="#how" class="btn btn-ghost">How It Works</a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="trust-item"><span class="trust-num">7<em>+</em></span><span class="trust-label">Industry Niches</span></div>
+          <div class="trust-item"><span class="trust-num">3</span><span class="trust-label">Markets: CA · US · UK</span></div>
+          <div class="trust-item"><span class="trust-num">24/7</span><span class="trust-label">Emergency Call Systems</span></div>
+          <div class="trust-item"><span class="trust-num">15<em>+</em></span><span class="trust-label">Years Tech Expertise</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="profile-wrap">
+          <img src="profile-img.png" alt="Alauddin — CallFlow Founder" class="profile-img" onerror="this.style.background='#152844'">
+          <div class="stat-float">
+            <div class="stat-float-num">CSE</div>
+            <div class="stat-float-label">Graduate</div>
+          </div>
+          <div class="cred-card">
+            <div class="cred-title">Alauddin — Founder, CallFlow™</div>
+            <div class="cred-sub">CSE · Ex-KFC Shift Manager · Baba Rafi IT Officer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker-bar" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">Google Map Pack #1 Rankings</span>
+    <span class="ticker-item">High-Intent Emergency Call Ads</span>
+    <span class="ticker-item">Missed-Call Recovery Automation</span>
+    <span class="ticker-item">🔑 Locksmith · 🛻 Towing · ⚡ Electrician</span>
+    <span class="ticker-item">🔧 Plumbing & HVAC · 🦷 Dental · 🐛 Pest Control</span>
+    <span class="ticker-item">🍔 Restaurant & Fast Food</span>
+    <span class="ticker-item">Canada · USA · United Kingdom</span>
+    <span class="ticker-item">CallFlow™ — Engineered for Service Businesses</span>
+    <span class="ticker-item">Google Map Pack #1 Rankings</span>
+    <span class="ticker-item">High-Intent Emergency Call Ads</span>
+    <span class="ticker-item">Missed-Call Recovery Automation</span>
+    <span class="ticker-item">🔑 Locksmith · 🛻 Towing · ⚡ Electrician</span>
+    <span class="ticker-item">🔧 Plumbing & HVAC · 🦷 Dental · 🐛 Pest Control</span>
+    <span class="ticker-item">🍔 Restaurant & Fast Food</span>
+    <span class="ticker-item">Canada · USA · United Kingdom</span>
+    <span class="ticker-item">CallFlow™ — Engineered for Service Businesses</span>
+  </div>
+</div>
+
+<!-- ══ NICHES ══ -->
+<section class="niches section-gap" id="niches" aria-labelledby="niches-h2">
+  <div class="container">
+    <span class="label">Our Systems</span>
+    <h2 id="niches-h2" style="font-size: clamp(28px,4vw,46px); margin-bottom: 14px;">Seven Precision-Engineered<br>Lead Generation Systems</h2>
+    <p style="color: var(--text-light); font-size: 17px; max-width: 600px;">Each niche has its own dedicated system — built around the specific customer journey, emergency keywords, and competitive landscape of that industry.</p>
+
+    <div class="niches-grid">
+
+      <a class="niche-card" href="index4.html">
+        <div class="niche-icon-wrap">🔑</div>
+        <h3>LocksmithCallFlow™</h3>
+        <p>Google Map Pack domination, high-intent car &amp; home lockout call ads, and missed-call recovery for locksmith businesses. Every unanswered emergency call is a $200–$500 job permanently lost.</p>
+        <div class="niche-tags"><span class="niche-tag">Car Lockout</span><span class="niche-tag">Home Lockout</span><span class="niche-tag">Commercial</span><span class="niche-tag">24/7 Emergency</span></div>
+        <div class="niche-meta"><span class="niche-brand">LocksmithCallFlow™</span><div class="niche-arrow">→</div></div>
+      </a>
+
+      <a class="niche-card" href="index5.html">
+        <div class="niche-icon-wrap">🛻</div>
+        <h3>TowingCallFlow™</h3>
+        <p>Emergency towing, flat tyre, battery jump start, fuel delivery, and winch-out call ads. Built for towing &amp; roadside assistance operators who want direct calls — not aggregator dispatch cuts.</p>
+        <div class="niche-tags"><span class="niche-tag">Emergency Tow</span><span class="niche-tag">Jump Start</span><span class="niche-tag">Fuel Delivery</span><span class="niche-tag">Winch-Out</span></div>
+        <div class="niche-meta"><span class="niche-brand">TowingCallFlow™</span><div class="niche-arrow">→</div></div>
+      </a>
+
+      <a class="niche-card" href="index6.html">
+        <div class="niche-icon-wrap">⚡</div>
+        <h3>ElectricianCallFlow™</h3>
+        <p>Map Pack domination and emergency electrical call ads for licensed electricians. Capture "emergency electrician near me," "power outage [city]," and every high-intent search before competitors do.</p>
+        <div class="niche-tags"><span class="niche-tag">Emergency Electrical</span><span class="niche-tag">Power Outage</span><span class="niche-tag">Residential</span><span class="niche-tag">Commercial</span></div>
+        <div class="niche-meta"><span class="niche-brand">ElectricianCallFlow™</span><div class="niche-arrow">→</div></div>
+      </a>
+
+      <a class="niche-card" href="index2.html">
+        <div class="niche-icon-wrap">🔧</div>
+        <h3>Plum-HVACCallFlow™</h3>
+        <p>High-intent plumbing &amp; HVAC call ads targeting burst pipes, boiler breakdowns, and AC failures. Direct calls only — no lead-sharing platforms that sell your job enquiry to five competitors at once.</p>
+        <div class="niche-tags"><span class="niche-tag">Emergency Plumbing</span><span class="niche-tag">HVAC</span><span class="niche-tag">Boiler Repair</span><span class="niche-tag">AC Service</span></div>
+        <div class="niche-meta"><span class="niche-brand">Plum-HVACCallFlow™</span><div class="niche-arrow">→</div></div>
+      </a>
+
+      <a class="niche-card" href="index1.html">
+        <div class="niche-icon-wrap">🦷</div>
+        <h3>DentalCallFlow™</h3>
+        <p>Patient acquisition systems for dental practices — Map Pack domination for "dentist near me," "emergency dental [city]," and new patient booking ads that fill your appointment calendar with high-value patients.</p>
+        <div class="niche-tags"><span class="niche-tag">New Patients</span><span class="niche-tag">Emergency Dental</span><span class="niche-tag">Implants</span><span class="niche-tag">Orthodontics</span></div>
+        <div class="niche-meta"><span class="niche-brand">DentalCallFlow™</span><div class="niche-arrow">→</div></div>
+      </a>
+
+      <a class="niche-card" href="index.html">
+        <div class="niche-icon-wrap">🐛</div>
+        <h3>BugFreeFlow™</h3>
+        <p>Pest control lead generation covering every infestation type — rodents, termites, bed bugs, and commercial accounts. Map Pack domination plus recurring contract automation that converts one-off jobs.</p>
+        <div class="niche-tags"><span class="niche-tag">Rodent</span><span class="niche-tag">Termite</span><span class="niche-tag">Bed Bug</span><span class="niche-tag">Commercial</span></div>
+        <div class="niche-meta"><span class="niche-brand">BugFreeFlow™</span><div class="niche-arrow">→</div></div>
+      </a>
+
+      <a class="niche-card" href="index3.html">
+        <div class="niche-icon-wrap">🍔</div>
+        <h3>FoodCallFlow™</h3>
+        <p>Restaurant &amp; fast-food growth systems — Google Maps domination, delivery platform SEO, walk-in customer acquisition, and automated review strategy. Built by someone who actually worked the line.</p>
+        <div class="niche-tags"><span class="niche-tag">Restaurants</span><span class="niche-tag">Fast Food</span><span class="niche-tag">Delivery</span><span class="niche-tag">Walk-In Traffic</span></div>
+        <div class="niche-meta"><span class="niche-brand">FoodCallFlow™</span><div class="niche-arrow">→</div></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how-section section-gap" id="how" aria-labelledby="how-h2">
+  <div class="container">
+    <span class="label">The System</span>
+    <h2 id="how-h2" style="font-size: clamp(28px,4vw,44px); margin-bottom: 14px;">How Every CallFlow™ System Works</h2>
+    <p style="color: var(--text-light); font-size: 16px; max-width: 580px; margin-bottom: 0;">The same 4-step precision framework powers every niche — engineered for one outcome: making your phone ring with high-value direct jobs.</p>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Deep Local Market Audit</h4>
+        <p>I analyse your service area, competitor Map Pack positions, high-intent keyword gaps, and your current Google Business profile — identifying exactly where jobs are going instead of to you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Local SEO &amp; Map Pack Domination</h4>
+        <p>Technical on-page SEO, Google Business optimisation, and citation building — pushing you into the top 3 Map Pack results for every high-intent emergency search in your service area.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>High-Intent Emergency Call Ads</h4>
+        <p>Precision Google Call Ads targeting customers with urgent needs right now. They call you directly — bypassing aggregator platforms that resell the same lead to multiple competitors and take a cut every time.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Missed-Call Recovery Automation</h4>
+        <p>Automated SMS fires the instant you miss a call — keeping every lead warm. Follow-up sequences convert one-off jobs into recurring contracts, building a compounding pipeline of stable revenue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROOF STRIP ══ -->
+<div class="proof-strip" aria-label="Key statistics">
+  <div class="container">
+    <div class="proof-grid">
+      <div class="proof-item"><span class="proof-num">7<span style="font-size:0.6em">+</span></span><span class="proof-label">Service Business<br>Niches Covered</span></div>
+      <div class="proof-item"><span class="proof-num">4–8</span><span class="proof-label">Weeks to Map Pack<br>Movement</span></div>
+      <div class="proof-item"><span class="proof-num">73%</span><span class="proof-label">of Service Businesses Not<br>Optimised for Emergency Searches</span></div>
+      <div class="proof-item"><span class="proof-num">3</span><span class="proof-label">Map Pack Spots.<br>All Competitors Want Them.</span></div>
+      <div class="proof-item"><span class="proof-num">24/7</span><span class="proof-label">Automated Missed-Call<br>Recovery — Always On</span></div>
+      <div class="proof-item"><span class="proof-num">15<span style="font-size:0.6em">+</span></span><span class="proof-label">Years Technical<br>Expertise</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MARKETS ══ -->
+<section class="markets section-gap" id="markets" aria-labelledby="markets-h2">
+  <div class="container">
+    <span class="label">Where We Operate</span>
+    <h2 id="markets-h2">Three Markets.<br>One Consistent System.</h2>
+    <p class="markets-intro">Every CallFlow™ system is built around the specific competitive landscape, search behaviour, and regulatory environment of each target market — not a one-size-fits-all template dropped into any region.</p>
+    <div class="markets-grid">
+      <div class="market-card">
+        <span class="market-flag">🇨🇦</span>
+        <h4>Canada</h4>
+        <p>Deep market intelligence across Greater Vancouver, Toronto, Calgary, Ottawa, and surrounding service corridors. Canadian emergency keyword patterns, Map Pack dynamics, and regional competitor benchmarking.</p>
+      </div>
+      <div class="market-card">
+        <span class="market-flag">🇺🇸</span>
+        <h4>United States</h4>
+        <p>Full coverage across major US metro areas and suburban service territories. High-intent search mapping, Google Local Services Ads integration, and state-specific compliance awareness.</p>
+      </div>
+      <div class="market-card">
+        <span class="market-flag">🇬🇧</span>
+        <h4>United Kingdom</h4>
+        <p>UK market-specific keyword strategy, Google Business optimisation for British search behaviour, and emergency services advertising across England, Scotland, Wales, and Northern Ireland.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section class="services section-gap" aria-labelledby="services-h2">
+  <div class="container">
+    <span class="label">Core Services</span>
+    <h2 id="services-h2" style="font-size: clamp(28px,4vw,44px); margin-bottom: 14px;">What Every CallFlow™ System Includes</h2>
+    <p style="color: var(--text-light); font-size: 16px; max-width: 560px;">Three interlocking systems — built once, running 24/7, generating direct inbound calls without sharing your leads with anyone.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon-box">🗺️</div>
+        <h4>Local SEO &amp; Map Pack Domination</h4>
+        <p>Own the top 3 Google Map Pack results for every high-intent local search in your service area — so customers call you first, not a competitor.</p>
+        <ul class="service-list">
+          <li>Google Business Profile optimisation</li>
+          <li>Local citation building &amp; gap analysis</li>
+          <li>On-page technical SEO for emergency keywords</li>
+          <li>Review strategy &amp; reputation management</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-box">📣</div>
+        <h4>High-Intent Emergency Call Ads</h4>
+        <p>Precision call-only Google Ads targeting customers with urgent needs right now — they call your number directly, bypassing every aggregator and directory that takes a cut.</p>
+        <ul class="service-list">
+          <li>Emergency &amp; high-intent keyword targeting</li>
+          <li>Call tracking &amp; conversion setup</li>
+          <li>Negative keyword filtering (zero wasted spend)</li>
+          <li>Weekly optimisation &amp; reporting</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-box">⚡</div>
+        <h4>Missed-Call Recovery &amp; Automation</h4>
+        <p>An instant automated SMS fires the moment you miss a call — keeping the lead warm and the job yours. Follow-up sequences build recurring revenue over time.</p>
+        <ul class="service-list">
+          <li>Instant missed-call SMS &amp; WhatsApp auto-response</li>
+          <li>24/7 lead capture &amp; callback scheduling</li>
+          <li>Recurring contract follow-up sequences</li>
+          <li>Full job pipeline dashboard &amp; tracking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHY CALLFLOW ══ -->
+<section class="why section-gap" id="why" aria-labelledby="why-h2">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-content">
+        <span class="label">Why CallFlow™</span>
+        <h2 id="why-h2">Built by Someone Who's Actually Worked in the Businesses I Serve.</h2>
+        <p>Most digital marketing agencies have never worked a day in a service business. I have. As a former KFC Shift Manager, I managed high-volume customer flow, operational pressure, and real-time problem-solving — the exact environment every service business operates in daily. I know what a missed call actually means on the ground.</p>
+        <p>As IT Executive Officer at Baba Rafi — a global fast-food franchise — I designed the operational IT systems that keep service businesses running at scale. That background, combined with my Computer Science degree and 15 years of technical expertise, means I don't just "run ads." I engineer complete lead generation systems, built around the real operational realities of each niche I serve.</p>
+        <ul class="credential-list">
+          <li><span class="cred-icon">🎓</span>CSE Graduate — technical precision in every system built</li>
+          <li><span class="cred-icon">🍗</span>Ex-KFC Shift Manager — real service ops experience under pressure</li>
+          <li><span class="cred-icon">🌐</span>Ex-IT Officer, Baba Rafi — corporate-scale service systems</li>
+          <li><span class="cred-icon">📍</span>Three markets: Canada, USA &amp; United Kingdom</li>
+          <li><span class="cred-icon">🔬</span>Data-first — every strategy grounded in real local market research</li>
+        </ul>
+      </div>
+      <div class="why-stats">
+        <div class="stat-box"><div class="stat-num-box">15<span style="font-size:20px">+</span></div><div class="stat-desc">Years Technical Experience</div></div>
+        <div class="stat-box"><div class="stat-num-box">7<span style="font-size:20px">+</span></div><div class="stat-desc">Niches with Dedicated Systems</div></div>
+        <div class="stat-box"><div class="stat-num-box">3</div><div class="stat-desc">Markets: CA, USA, UK</div></div>
+        <div class="stat-box"><div class="stat-num-box">30</div><div class="stat-desc">Min Free Audit — No Commitment</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="faq section-gap" id="faq" aria-labelledby="faq-h2">
+  <div class="container">
+    <span class="label">Common Questions</span>
+    <h2 id="faq-h2" style="font-size: clamp(28px,4vw,44px); margin-bottom: 14px;">What Service Business Owners Ask About CallFlow™</h2>
+    <p style="color: var(--text-light); font-size: 16px; max-width: 560px;">No jargon. Straight answers about how the system works and what to expect.</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What makes CallFlow™ different from a regular marketing agency?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a">Most agencies apply generic PPC and SEO templates across every industry. CallFlow™ builds niche-specific systems — each one engineered around the exact customer journey, emergency search intent, and competitive landscape of that specific service business. I've also worked in service operations first-hand, which means I understand the real operational cost of a missed call, not just the theoretical one.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you work with businesses in all seven niches simultaneously?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a">Yes. Each niche operates as a fully independent system with its own brand, keyword strategy, ad architecture, and Map Pack approach. Working across niches actually strengthens the research — patterns identified in the locksmith market, for example, often reveal opportunities in the electrician or towing markets that competitors in those spaces have never noticed.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How quickly can I see results after starting?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a">Google Call Ads can start driving direct calls within days of launch. Map Pack movement typically takes 4–8 weeks depending on your current profile health and local competition density. The missed-call automation system is live from day one. Your free audit will give you a realistic timeline specific to your service area and current competitive position.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">I'm already running Google Ads. Why isn't it working?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a">Most Google Ads campaigns for service businesses fail for three reasons: generic keyword targeting that captures research intent rather than emergency intent, campaigns sending clicks to websites instead of direct calls, and no negative keyword strategy causing budget waste on irrelevant searches. CallFlow™ systems are call-first by design — every element is engineered to generate phone calls, not website visits.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What's in the free 30-minute audit?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a">I'll cover: your current Map Pack position and what's specifically preventing you from reaching the top 3, the highest-intent emergency keywords in your service area that you're currently missing, a breakdown of your top 3 local competitors' strategies, and a clear action plan. No commitment required — just data and a roadmap you can take away regardless of whether we work together.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Which niche system is right for my business?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a">Navigate to the specific niche page from the "Our Niches" menu above — each one is fully detailed with the services covered, the exact search terms targeted, and the specific pain points it solves. If your industry isn't listed yet, book a free audit call and I'll assess whether a custom system can be built for your market. New niches are added regularly based on demand and market research.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer id="audit" aria-label="Contact and booking">
+  <div class="container footer-inner">
+    <span class="label" style="color:var(--orange); justify-content:center;">Get Started — It's Free</span>
+    <h2>Ready to Make Your Phone<br><em>Ring With the Right Jobs?</em></h2>
+    <p class="footer-sub">Book a free 30-minute market audit. I'll review your local competitors, your Map Pack position, emergency keyword gaps, and show you exactly what it would take to dominate your local market — no obligation, no fluff.</p>
+
+    <div class="footer-cta-row">
+      <a href="https://wa.me/8801689851306" class="btn btn-primary">💬 WhatsApp Me Now</a>
+      <a href="https://calendly.com/alauddinxyzbd/30min" class="btn btn-ghost">📅 Schedule via Calendly</a>
+    </div>
+
+    <!-- Niche links -->
+    <p style="font-size: 11px; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 16px;">Our Niche Systems</p>
+    <div class="footer-niches">
+      <a class="footer-niche-link" href="index4.html">🔑 LocksmithCallFlow™</a>
+      <a class="footer-niche-link" href="index5.html">🛻 TowingCallFlow™</a>
+      <a class="footer-niche-link" href="index6.html">⚡ ElectricianCallFlow™</a>
+      <a class="footer-niche-link" href="index2.html">🔧 Plum-HVACCallFlow™</a>
+      <a class="footer-niche-link" href="index1.html">🦷 DentalCallFlow™</a>
+      <a class="footer-niche-link" href="index.html">🐛 BugFreeFlow™</a>
+      <a class="footer-niche-link" href="index3.html">🍔 FoodCallFlow™</a>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-meta">
+      <p><strong>Alauddin</strong> — CSE Graduate, Ex-KFC Shift Manager &amp; Lead Generation Systems Engineer</p>
+      <p>Founder · <strong>CallFlow™</strong> · Serving Service Businesses across USA, Canada &amp; UK</p>
+      <p style="margin-top: 8px;">
+        <a href="https://wa.me/8801689851306">💬 WhatsApp</a> &nbsp;·&nbsp;
+        <a href="https://calendly.com/alauddinxyzbd/30min">📅 Book a Call</a> &nbsp;·&nbsp;
+        <a href="mailto:hello@callflow.io">✉️ hello@callflow.io</a>
+      </p>
+      <p style="margin-top: 16px; opacity: 0.35;">© 2026 CallFlow™ · All Rights Reserved · callflow.io</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  // Mobile menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobileMenu');
+    const hamburger = document.querySelector('.hamburger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+
+  // Nav dropdown: keyboard accessibility
+  document.querySelectorAll('.nav-links > li > button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.nav-links > li > button').forEach(b => b.setAttribute('aria-expanded', 'false'));
+      btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    });
+  });
+
+  // Sticky nav highlight
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navLinks = document.querySelectorAll('.nav-links > li > a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => { a.classList.remove('active'); if (a.getAttribute('href') === '#' + current) a.classList.add('active'); });
+  });
+</script>
+</body>
+</html>
